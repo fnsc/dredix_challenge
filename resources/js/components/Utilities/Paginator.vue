@@ -13,7 +13,7 @@
                         paginate.first_page_url != null ? 'false' : 'true'
                     "
                     @click.prevent="page(paginate.first_page_url)"
-                    >Primeira</a
+                    >First</a
                 >
             </li>
             <li
@@ -37,9 +37,7 @@
                     class="page-link"
                     href="#"
                     v-html="
-                        `${
-                            paginate.current_page
-                        } <span class='sr-only'>(current)</span> de ${paginate.last_page}`
+                        `${paginate.current_page} <span class='sr-only'>(current)</span> of ${paginate.last_page}`
                     "
                 ></a>
             </li>
@@ -71,7 +69,7 @@
                         paginate.last_page_url != null ? 'false' : 'true'
                     "
                     @click.prevent="page(paginate.last_page_url)"
-                    >Última</a
+                    >Last</a
                 >
             </li>
         </ul>
@@ -83,7 +81,7 @@ export default {
     methods: {
         page(url) {
             window.events.$emit("page", url);
-        }
-    }
+        },
+    },
 };
 </script>

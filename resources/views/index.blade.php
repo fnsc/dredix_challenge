@@ -53,12 +53,12 @@
     <div class="container-fluid" id="app">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="text-center">Date Calculator</h1>
+                <h1 class="text-center">Date Diff</h1>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <create-date-result-component></create-date-result-component>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-3">
                 <index-date-result-component></index-date-result-component>
             </div>
         </div>

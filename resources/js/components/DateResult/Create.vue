@@ -79,13 +79,15 @@ export default {
                     .post("/")
                     .then((result) => {
                         window.events.$emit("loading", false);
-                        console.log(result);
+                        window.events.$emit("new_line", result);
                         window.flash("We did it!");
                     })
                     .catch((errors) => {
                         window.events.$emit("loading", false);
-                        console.error(errors);
-                        window.flash("Something went wrong.", "danger");
+                        window.flash(
+                            "Something went wrong. Reload and try again.",
+                            "danger"
+                        );
                     });
             },
             500,
