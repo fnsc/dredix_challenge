@@ -14,6 +14,7 @@
                     lang="en-us"
                     input-class="form-control"
                     width="100%"
+                    @change="verifyDates"
                 ></date-picker>
                 <small
                     class="text-danger"
@@ -37,6 +38,7 @@
                         form.start_date != '' ? form.start_date : new Date()
                     "
                     width="100%"
+                    @change="verifyDates"
                 ></date-picker>
                 <small
                     class="text-danger"
@@ -66,11 +68,18 @@ export default {
     methods: {
         send: _.throttle(
             function() {
+                this.form.start_date = moment(this.form.start_date).format(
+                    "YYYY-MM-DD"
+                );
+                this.form.end_date = moment(this.form.end_date).format(
+                    "YYYY-MM-DD"
+                );
                 window.events.$emit("loading", true);
                 this.form
                     .post("/")
                     .then((result) => {
                         window.events.$emit("loading", false);
+                        console.log(result);
                         window.flash("We did it!");
                     })
                     .catch((errors) => {
@@ -82,6 +91,16 @@ export default {
             500,
             { trailing: false }
         ),
+        verifyDates() {
+            if (this.form.start_date < this.form.end_date) {
+                window.swal.fire(
+                    "Ooops...",
+                    "The start date must be equal or greater than the end date",
+                    "warning"
+                );
+                this.form.end_date = "";
+            }
+        },
     },
 };
 </script>

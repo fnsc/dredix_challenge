@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DateResult extends Model
 {
-    protected $fillable = ['date_1', 'date_2', 'result'];
+    protected $fillable = ['start_date', 'end_date', 'result'];
 
     /**
      *

@@ -30,6 +30,23 @@ class DateResultController extends Controller
      */
     public function store(Request $request)
     {
-        dd(request()->all());
+        request()->validate([
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+
+        return DateResult::create([
+            'start_date' => request('start_date'),
+            'end_date' => request('end_date'),
+            'result' => $this->calculate()
+        ]);
+    }
+
+    /**
+     *
+     */
+    protected function calculate()
+    {
+        return (strtotime(request('start_date')) - strtotime(request('end_date'))) / 86400;
     }
 }
