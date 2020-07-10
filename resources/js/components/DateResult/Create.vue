@@ -84,10 +84,7 @@ export default {
                     })
                     .catch((errors) => {
                         window.events.$emit("loading", false);
-                        window.flash(
-                            "Something went wrong. Reload and try again.",
-                            "danger"
-                        );
+                        window.flash("Something went wrong.", "danger");
                     });
             },
             500,
